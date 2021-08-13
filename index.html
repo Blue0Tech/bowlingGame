@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bowling Alley</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>   
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script src="./Balls.js"></script>
+    
+    
+  </head>
+  <body>
+    <a-scene id="scene" physics="gravity: -9.81">
+
+      <!--Assets-->
+      <a-assets>
+        <a-asset-item id="pin" src="./assets/pin/scene.gltf"></a-asset-item>
+        <img id="alley" src="./assets/alley.png"></a-assets>
+      </a-assets>
+      
+      <!--Light-->
+      <a-entity light="type: ambient; color: yellow; intensity:0.5"></a-entity>
+
+      <!--Camera and Cursor-->
+      <a-entity
+        id="camera"
+        camera
+        position="0 1.6 0"
+        wasd-controls
+        look-controls="pointerLockEnabled: true"        
+      >
+        
+        <a-cursor id="cursor" position="0 0 -1"></a-cursor>        
+      </a-entity>
+
+      <!--Gun-->
+      <!-- <a-entity id="gunEntity" position="0 1.6 0" rotation="0 180 0">
+        <a-entity position="0 -0.45 0" scale="0.1 0.1 0.1" gltf-model='#gun'></a-entity>
+      </a-entity> -->
+
+      <!--Bullets-->
+      <a-entity balls></a-entity>
+
+      <!--Ground-->
+      <a-plane
+        id="ground"
+        repeat="5 5"
+        position="0 1 0"
+        rotation="-90 0 0"
+        height="200"
+        width="200"
+        color="#FBF2D4"
+        static-body
+        visible="true"
+        src="#alley"
+      >
+      </a-plane>
+
+      <!--Pins-->
+      <a-entity gltf-model="#pin" position="-1 1.1 -10" scale="2 2 2" dynamic-body></a-entity>
+      <a-entity gltf-model="#pin" position="-0.5 1.1 -10" scale="2 2 2" dynamic-body></a-entity>
+      <a-entity gltf-model="#pin" position="0 1.1 -10" scale="2 2 2" dynamic-body></a-entity>
+      <a-entity gltf-model="#pin" position="0.5 1.1 -10" scale="2 2 2" dynamic-body></a-entity>
+      <a-entity gltf-model="#pin" position="1 1.1 -10" scale="2 2 2" dynamic-body></a-entity>
+      <a-entity gltf-model="#pin" position="-0.75 1.1 -10.4" scale="2 2 2" dynamic-body></a-entity>
+      <a-entity gltf-model="#pin" position="-0.25 1.1 -10.4" scale="2 2 2" dynamic-body></a-entity>
+      <a-entity gltf-model="#pin" position="0.25 1.1 -10.4" scale="2 2 2" dynamic-body></a-entity>
+      <a-entity gltf-model="#pin" position="0.75 1.1 -10.4" scale="2 2 2" dynamic-body></a-entity>
+      <a-entity gltf-model="#pin" position="1.25 1.1 -10.4" scale="2 2 2" dynamic-body></a-entity>
+      
+    </a-scene>
+  </body>
+</html>
