@@ -14,22 +14,27 @@
       <!--Assets-->
       <a-assets>
         <a-asset-item id="pin" src="./assets/pin/scene.gltf"></a-asset-item>
-        <img id="alley" src="./assets/alley.png"></a-assets>
+        <img id="alley" src="./assets/alley.png"></img> 
+        <img id="place" src="./assets/place.png"></img>
+      </a-assets>
       </a-assets>
       
       <!--Light-->
       <a-entity light="type: ambient; color: yellow; intensity:0.5"></a-entity>
+      
+      <!--Sky-->
+      <a-sky src="#place"></a-sky>
 
       <!--Camera and Cursor-->
       <a-entity
         id="camera"
         camera
-        position="0 1.6 0"
+        position="0 2 2"
         wasd-controls
         look-controls="pointerLockEnabled: true"        
       >
         
-        <a-cursor id="cursor" position="0 0 -1"></a-cursor>        
+        <a-cursor id="cursor" position="0 0 -1" color="white"></a-cursor>        
       </a-entity>
 
       <!--Gun-->
@@ -38,34 +43,43 @@
       </a-entity> -->
 
       <!--Bullets-->
-      <a-entity balls></a-entity>
+      <a-entity balls id="caller"></a-entity>
 
       <!--Ground-->
       <a-plane
         id="ground"
         repeat="5 5"
-        position="0 1 0"
+        position="0 1 -4.5"
         rotation="-90 0 0"
-        height="200"
-        width="200"
+        height="13.5"
+        width="3"
         color="#FBF2D4"
         static-body
         visible="true"
-        src="#alley"
+        material="src:#alley;repeat:1 4;"
       >
       </a-plane>
 
+      <!--Walls-->
+      <a-box position="-1.75 1 -4.5" width="0.5" height="1" depth="13.5" static-body color="#FBF2D4"></a-box>
+      <a-box position="1.75 1 -4.5" width="0.5" height="1" depth="13.5" static-body color="#FBF2D4"></a-box>
+
       <!--Pins-->
-      <a-entity gltf-model="#pin" position="-1 1.1 -10" scale="2 2 2" dynamic-body></a-entity>
-      <a-entity gltf-model="#pin" position="-0.5 1.1 -10" scale="2 2 2" dynamic-body></a-entity>
-      <a-entity gltf-model="#pin" position="0 1.1 -10" scale="2 2 2" dynamic-body></a-entity>
-      <a-entity gltf-model="#pin" position="0.5 1.1 -10" scale="2 2 2" dynamic-body></a-entity>
-      <a-entity gltf-model="#pin" position="1 1.1 -10" scale="2 2 2" dynamic-body></a-entity>
-      <a-entity gltf-model="#pin" position="-0.75 1.1 -10.4" scale="2 2 2" dynamic-body></a-entity>
-      <a-entity gltf-model="#pin" position="-0.25 1.1 -10.4" scale="2 2 2" dynamic-body></a-entity>
-      <a-entity gltf-model="#pin" position="0.25 1.1 -10.4" scale="2 2 2" dynamic-body></a-entity>
-      <a-entity gltf-model="#pin" position="0.75 1.1 -10.4" scale="2 2 2" dynamic-body></a-entity>
-      <a-entity gltf-model="#pin" position="1.25 1.1 -10.4" scale="2 2 2" dynamic-body></a-entity>
+      <a-entity id="pins">
+        <a-entity gltf-model="#pin" position="-0.8 1.1 -10" scale="1.5 1.5 1.5" dynamic-body id="pin1"></a-entity>
+        <a-entity gltf-model="#pin" position="-0.4 1.1 -10" scale="1.5 1.5 1.5" dynamic-body id="pin2"></a-entity>
+        <a-entity gltf-model="#pin" position="0 1.1 -10" scale="1.5 1.5 1.5" dynamic-body id="pin3"></a-entity>
+        <a-entity gltf-model="#pin" position="0.4 1.1 -10" scale="1.5 1.5 1.5" dynamic-body id="pin4"></a-entity>
+        <a-entity gltf-model="#pin" position="0.8 1.1 -10" scale="1.5 1.5 1.5" dynamic-body id="pin5"></a-entity>
+        <a-entity gltf-model="#pin" position="-0.6 1.1 -10.4" scale="1.5 1.5 1.5" dynamic-body id="pin6"></a-entity>
+        <a-entity gltf-model="#pin" position="-0.2 1.1 -10.4" scale="1.5 1.5 1.5" dynamic-body id="pin7"></a-entity>
+        <a-entity gltf-model="#pin" position="0.2 1.1 -10.4" scale="1.5 1.5 1.5" dynamic-body id="pin8"></a-entity>
+        <a-entity gltf-model="#pin" position="0.6 1.1 -10.4" scale="1.5 1.5 1.5" dynamic-body id="pin9"></a-entity>
+        <a-entity gltf-model="#pin" position="1 1.1 -10.4" scale="1.5 1.5 1.5" dynamic-body id="pin10"></a-entity>
+      </a-entity>
+
+      <!--Pins left-->
+      <a-entity text="value:10 pins left" position="0 2.3 1.5" id="pinsLeft"></a-entity>
       
     </a-scene>
   </body>
